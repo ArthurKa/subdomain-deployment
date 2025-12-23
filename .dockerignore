@@ -1,0 +1,10 @@
+**node_modules
+Dockerfile
+docker-compose.yml
+.dockerignore
+.git*
+.husky
+README.md
+.next
+*.tsbuildinfo
+dump

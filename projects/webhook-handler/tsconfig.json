@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "lib": [
+      "ESNext",
+    ],
+    "paths": {
+      "@repo/common/src/*": [
+        "../../../packages/common/src/*",
+      ],
+    },
+  },
+  "include": [
+    "src",
+  ],
+}

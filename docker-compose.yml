@@ -1,0 +1,35 @@
+services:
+  webhook-handler:
+    networks:
+      - subdomain-deployment
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: webhook-handler
+    image: subdomain-deployment_webhook-handler
+    container_name: subdomain-deployment_webhook-handler
+    depends_on:
+      - redis
+    env_file: .env
+    restart: unless-stopped
+    expose:
+      - 3000
+
+  redis:
+    networks:
+      - subdomain-deployment
+    image: redis:7.4.3
+    container_name: subdomain-deployment_redis
+    restart: unless-stopped
+    expose:
+      - 6379
+    volumes:
+      - ./redis-data:/data
+    command: >-
+      redis-server
+        --appendonly yes
+        --requirepass ${REDIS_PASS:?}
+
+networks:
+  subdomain-deployment:
+    external: true

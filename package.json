@@ -1,0 +1,26 @@
+{
+  "name": "repo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prune": "rm -rf node_modules && npm run prune:sub && npm run prune:build",
+    "prune:sub": "rm -rf {projects,packages}/*/node_modules",
+    "webhook-handler:dev": "npm run start-checks && npm run dev -w projects/webhook-handler",
+    "webhook-handler:ts:noWatch": "npm run start-checks && npm run ts:noWatch -w projects/webhook-handler",
+    "webhook-handler:start": "npm run start-checks && npm run start -w projects/webhook-handler",
+    "repo-fix": "node helpers/eslint-helper.js --fix",
+    "start-checks": "node helpers/start-checks.js && node helpers/check-package-versions.js && node helpers/modify-node-modules/index.js --check",
+    "preinstall": "node helpers/modify-node-modules/index.js && npm run start-checks",
+    "prepare": "node -e \"try { require('husky').install(); } catch(e) { if(e.code !== 'MODULE_NOT_FOUND') throw e; }\""
+  },
+  "devDependencies": {
+    "@arthurka/eslint": "3.15.4",
+    "@types/semver": "7.7.1",
+    "husky": "8.0.3",
+    "semver": "7.7.2"
+  },
+  "workspaces": [
+    "packages/*",
+    "projects/*"
+  ]
+}
