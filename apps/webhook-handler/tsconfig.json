@@ -7,7 +7,7 @@
     ],
     "paths": {
       "@repo/common/src/*": [
-        "../../../packages/common/src/*",
+        "../../../libs/common/src/*",
       ],
     },
   },

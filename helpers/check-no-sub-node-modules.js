@@ -33,7 +33,7 @@ for(const pkg of packageNames) {
   const folderList = readFolder(path.join(pkg, 'node_modules'));
 
   const pkgs = [
-    'projects/app',
+    'apps/app',
   ];
 
   if(!folderList || pkgs.includes(pkg) && folderList.length === 1 && folderList[0] === '.vite') {

@@ -20,7 +20,7 @@ const result = {
   packages: Object.fromEntries(
     Object.entries(pkgLock.packages)
       .filter(([key]) => {
-        if(!key.startsWith(`node_modules/@${name}/`) && !key.startsWith('projects/') && !key.startsWith('packages/')) {
+        if(!key.startsWith(`node_modules/@${name}/`) && !key.startsWith('apps/') && !key.startsWith('libs/')) {
           return true;
         }
 

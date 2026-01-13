@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prune": "rm -rf node_modules && npm run prune:sub && npm run prune:build",
-    "prune:sub": "rm -rf {projects,packages}/*/node_modules",
-    "webhook-handler:dev": "npm run start-checks && npm run dev -w projects/webhook-handler",
-    "webhook-handler:ts:noWatch": "npm run start-checks && npm run ts:noWatch -w projects/webhook-handler",
-    "webhook-handler:start": "npm run start-checks && npm run start -w projects/webhook-handler",
+    "prune": "rm -rf node_modules && npm run prune:sub",
+    "prune:sub": "rm -rf {apps,libs}/*/node_modules",
+    "webhook-handler:dev": "npm run start-checks && npm run dev -w apps/webhook-handler",
+    "webhook-handler:ts:noWatch": "npm run start-checks && npm run ts:noWatch -w apps/webhook-handler",
+    "webhook-handler:start": "npm run start-checks && npm run start -w apps/webhook-handler",
     "repo-fix": "node helpers/eslint-helper.js --fix",
     "start-checks": "node helpers/start-checks.js && node helpers/check-package-versions.js && node helpers/modify-node-modules/index.js --check",
     "preinstall": "node helpers/modify-node-modules/index.js && npm run start-checks",
@@ -20,7 +20,7 @@
     "semver": "7.7.2"
   },
   "workspaces": [
-    "packages/*",
-    "projects/*"
+    "apps/*",
+    "libs/*"
   ]
 }
